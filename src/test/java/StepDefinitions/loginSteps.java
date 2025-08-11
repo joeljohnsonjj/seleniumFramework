@@ -17,7 +17,7 @@ public class loginSteps {
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:/Users/JoelJohnson(G10XIND)/Desktop/sampleBddFramework/src/drivers/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/drivers/chromedriver.exe");
         driver = new ChromeDriver();
         login = new loginPage(driver);
     }
