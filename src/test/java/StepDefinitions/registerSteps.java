@@ -6,12 +6,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.json.simple.parser.ParseException;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.registerPage;
-
 import java.io.IOException;
+import java.util.List;
 
 public class registerSteps {
 
@@ -59,12 +58,6 @@ public class registerSteps {
 
     @Then("I verify registration completed")
     public void user_registration_completed() throws InterruptedException {
-        String successMessage = driver.findElement(By.xpath("//p[contains(text(),'Your account was created successfully. You are now logged in.')]")).getText();
-        if (successMessage.equals("Your account was created successfully. You are now logged in.")) {
-            System.out.println("Registration successful!");
-        } else {
-            System.out.println("Registration failed!");
-        }
-        driver.quit(); // Close the browser after verification
+        register.verifyRegistration();
     }
 }

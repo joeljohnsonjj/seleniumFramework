@@ -22,7 +22,4 @@ public class objectRepository {
     // Registration button
     public static String registerButton = "/html[1]/body[1]/div[1]/div[3]/div[2]/form[1]/table[1]/tbody[1]/tr[13]/td[2]/input[1]";
 
-    // Success/Error messages
-    public static String registrationSuccessMessage = "Your account was created successfully. You are now logged in.";
-
 }

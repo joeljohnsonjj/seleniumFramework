@@ -6,11 +6,11 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import java.io.FileReader;
 import java.io.IOException;
-
 import static pages.objectRepository.*;
+import java.util.List;
+import java.util.ArrayList;
 
 public class registerPage {
 
@@ -39,17 +39,17 @@ public class registerPage {
         JSONArray RegistersArray = (JSONArray) obj;
         JSONObject Registers = (JSONObject) RegistersArray.get(0);
 
-        String firstName = (String) Registers.get("firstName");
-        String lastName = (String) Registers.get("lastName");
-        String address = (String) Registers.get("address");
-        String city = (String) Registers.get("city");
-        String state = (String) Registers.get("state");
-        String zipCode = (String) Registers.get("zipCode");
-        String phoneNumber = (String) Registers.get("phoneNumber");
-        String ssn = (String) Registers.get("ssn");
-        String username = (String) Registers.get("username");
-        String password = (String) Registers.get("password");
-        String confirmPassword = (String) Registers.get("confirmPassword");
+            String firstName = (String) Registers.get("firstName");
+            String lastName = (String) Registers.get("lastName");
+            String address = (String) Registers.get("address");
+            String city = (String) Registers.get("city");
+            String state = (String) Registers.get("state");
+            String zipCode = (String) Registers.get("zipCode");
+            String phoneNumber = (String) Registers.get("phoneNumber");
+            String ssn = (String) Registers.get("ssn");
+            String username = (String) Registers.get("username");
+            String password = (String) Registers.get("password");
+            String confirmPassword = (String) Registers.get("confirmPassword");
 
         return new String[]{ firstName, lastName, address, city, state, zipCode, phoneNumber, ssn, username, password, confirmPassword};
     }
@@ -66,5 +66,15 @@ public class registerPage {
         driver.findElement(By.xpath(usernameField)).sendKeys(username);
         driver.findElement(By.xpath(passwordField)).sendKeys(password);
         driver.findElement(By.xpath(confirmPasswordField)).sendKeys(confirmPassword);
+    }
+
+    public void verifyRegistration() {
+        String successMessage = driver.findElement(By.xpath("//p[contains(text(),'Your account was created successfully. You are now logged in.')]")).getText();
+        if (successMessage.equals("Your account was created successfully. You are now logged in.")) {
+            System.out.println("Registration successful!");
+        } else {
+            System.out.println("Registration failed!");
+        }
+        driver.quit(); // Close the browser after verification
     }
 }
