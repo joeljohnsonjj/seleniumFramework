@@ -1,0 +1,28 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Smith",
+    "address": "123 Main Street",
+    "city": "Springfield",
+    "state": "IL",
+    "zipCode": "62701",
+    "phoneNumber": "(555) 123-4567",
+    "ssn": "123-45-6789",
+    "username": "jsmith75435",
+    "password": "SecurePass123!",
+    "confirmPassword": "SecurePass123!"
+  },
+  {
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "address": "456 Elm Street",
+    "city": "Shelbyville",
+    "state": "IN",
+    "zipCode": "46176",
+    "phoneNumber": "(555) 987-6543",
+    "ssn": "987-65-4321",
+    "username": "jdoe235",
+    "password": "AnotherPass456!",
+    "confirmPassword": "AnotherPass456!"
+  }
+]

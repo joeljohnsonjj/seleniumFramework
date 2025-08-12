@@ -3,8 +3,10 @@ package pages;
 public class objectRepository {
 
     public static String homePage = "https://parabank.parasoft.com/parabank/index.htm";
+    public static String registerPage = "https://parabank.parasoft.com/parabank/register.htm";
     public static String registerHyperlink = "/html[1]/body[1]/div[1]/div[3]/div[1]/div[1]/p[2]/a[1]";
     public static String registerFixture = "src/test/java/fixtures/testRegisters.json";
+    public static String registerFixtureMultiple = "src/test/java/fixtures/testRegistersMultiple.json";
 
     // Registration form fields
     public static String firstNameField = "/html[1]/body[1]/div[1]/div[3]/div[2]/form[1]/table[1]/tbody[1]/tr[1]/td[2]/input[1]";

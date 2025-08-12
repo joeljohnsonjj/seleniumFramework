@@ -59,5 +59,36 @@ public class registerSteps {
     @Then("I verify registration completed")
     public void user_registration_completed() throws InterruptedException {
         register.verifyRegistration();
+        driver.quit(); // Close the browser after verification
     }
+
+    @Given("I am on the registration page")
+    public void user_is_on_register_page() {
+        register.navigateRegister();
+    }
+
+    @When("I enter multiple details from fixture file and click register, I verify registration completed")
+    public void user_enters_multiple_details() throws IOException, ParseException {
+        List<String[]> registrationDataList = register.registrationFixtureParserMultiple();
+        for (String[] registrationData : registrationDataList) {
+            String firstName = registrationData[0];
+            String lastName = registrationData[1];
+            String address = registrationData[2];
+            String city = registrationData[3];
+            String state = registrationData[4];
+            String zipCode = registrationData[5];
+            String phoneNumber = registrationData[6];
+            String ssn = registrationData[7];
+            String username = registrationData[8];
+            String password = registrationData[9];
+            String confirmPassword = registrationData[10];
+            register.enterRegistrationDetails(firstName, lastName, address, city, state, zipCode, phoneNumber, ssn, username, password, confirmPassword);
+            register.clickRegisterButton();
+            register.verifyRegistration();
+            register.navigateRegister();
+        }
+        driver.quit(); // Close the browser after verification
+    }
+
+
 }

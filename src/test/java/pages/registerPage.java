@@ -24,6 +24,10 @@ public class registerPage {
         driver.navigate().to(homePage);
     }
 
+    public void navigateRegister(){
+        driver.navigate().to(registerPage);
+    }
+
     public void clicktoRegisterPage(){
         driver.findElement(By.xpath(registerHyperlink)).click();
     }
@@ -68,6 +72,33 @@ public class registerPage {
         driver.findElement(By.xpath(confirmPasswordField)).sendKeys(confirmPassword);
     }
 
+    public List<String[]> registrationFixtureParserMultiple() throws IOException, ParseException {
+        JSONParser jsonparser = new JSONParser();
+        FileReader reader = new FileReader(registerFixtureMultiple);
+        Object obj = jsonparser.parse(reader);
+        JSONArray RegistersArray = (JSONArray) obj;
+
+        List<String[]> registrationDataList = new ArrayList<>();
+        for (Object registerObj : RegistersArray) {
+            JSONObject Registers = (JSONObject) registerObj;
+
+            String firstName = (String) Registers.get("firstName");
+            String lastName = (String) Registers.get("lastName");
+            String address = (String) Registers.get("address");
+            String city = (String) Registers.get("city");
+            String state = (String) Registers.get("state");
+            String zipCode = (String) Registers.get("zipCode");
+            String phoneNumber = (String) Registers.get("phoneNumber");
+            String ssn = (String) Registers.get("ssn");
+            String username = (String) Registers.get("username");
+            String password = (String) Registers.get("password");
+            String confirmPassword = (String) Registers.get("confirmPassword");
+
+            registrationDataList.add(new String[]{firstName, lastName, address, city, state, zipCode, phoneNumber, ssn, username, password, confirmPassword});
+        }
+        return registrationDataList;
+    }
+
     public void verifyRegistration() {
         String successMessage = driver.findElement(By.xpath("//p[contains(text(),'Your account was created successfully. You are now logged in.')]")).getText();
         if (successMessage.equals("Your account was created successfully. You are now logged in.")) {
@@ -75,6 +106,5 @@ public class registerPage {
         } else {
             System.out.println("Registration failed!");
         }
-        driver.quit(); // Close the browser after verification
     }
 }
